@@ -1,0 +1,19 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+/* ------------------------------------------------------------------------------------------------ */
+/* Core style */
+/* ------------------------------------------------------------------------------------------------ */
+@import "core/variables.scss";
+@import "core/fonts.scss";
+@import "core/global.scss";
+
+/* ------------------------------------------------------------------------------------------------ */
+/* Component style */
+/* ------------------------------------------------------------------------------------------------ */
+@import "components/header.scss";
+@import "components/footer.scss";
+@import "components/form.scss";
+@import "components/button.scss";
+@import "components/card.scss";
+@import "components/modal.scss";
+@import "components/img.scss";

@@ -1,0 +1,142 @@
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px,
+  // Extra large screen / wider desktop
+  xxl: 1440px,
+);
+
+// =============================================================
+// COLOR SYSTEM
+// =============================================================
+
+// PRIMARY
+$color-primary-red: #C41F1F;
+$color-primary-purple: #943383;
+$color-primary-blue: #007BFF;
+$color-primary-grey: #434A52;
+$color-primary-black: #121212;
+
+// BACKGROUND
+$color-background     : #F9FCFF;
+
+// BLACK WHITE
+$color-black          : #000000;
+$color-white          : #FFFFFF;
+
+// GRADIENT
+$color-gradient       : linear-gradient(27.77deg, #1954A4 11.27%, #973282 89.65%);
+
+// =============================================================
+// UTILITY
+// =============================================================
+
+//Size
+$size-0  : 0;
+$size-1  : 4px;
+$size-2  : 8px;
+$size-3  : 12px;
+$size-4  : 16px;
+$size-5  : 20px;
+$size-6  : 24px;
+$size-7  : 28px;
+$size-8  : 32px;
+$size-9  : 36px;
+$size-10 : 40px;
+$size-11 : 44px;
+$size-12 : 48px;
+$size-13 : 52px;
+$size-14 : 56px;
+$size-15 : 60px;
+$size-16 : 64px;
+$size-17 : 68px;
+$size-18 : 72px;
+$size-19 : 76px;
+$size-20 : 80px;
+$sizes   : () !default;
+$sizes   : map-merge(
+  (
+    0        : $size-0,
+    1        : $size-1,
+    2        : $size-2,
+    3        : $size-3,
+    4        : $size-4,
+    5        : $size-5,
+    6        : $size-6,
+    7        : $size-7,
+    8        : $size-8,
+    9        : $size-9,
+    10       : $size-10,
+    11       : $size-11,
+    12       : $size-12,
+    13       : $size-13,
+    14       : $size-14,
+    15       : $size-15,
+    16       : $size-16,
+    17       : $size-17,
+    18       : $size-18,
+    19       : $size-19,
+    20       : $size-20
+  ), $sizes
+);
+
+// Side
+$all-side : '';
+$top      : "top";
+$bottom   : "bottom";
+$left     : "left";
+$right    : "right";
+$sides    : () !default;
+$sides    : map-merge(
+  (
+    ''  : $all-side,
+    't' : "-#{$top}",
+    'b' : "-#{$bottom}",
+    'l' : "-#{$left}",
+    'r' : "-#{$right}"
+  ), $sides
+);
+
+// Font Size 
+@each $p, $prop in (fs: font-size, lh: line-height){
+  @each $key, $size in $sizes{
+    .#{$p}--#{$key}{
+      #{$prop}: $size !important;
+    }
+  }
+}
+
+// Size 
+@each $p, $prop in (w: width, h: height){
+  @each $key, $size in $sizes{
+    .#{$p}--#{$key}{
+      #{$prop}: $size !important;
+    }
+  }
+}
+
+// Margins and Paddings
+@each $p, $prop in (m: margin, p: padding) {
+  @each $s, $side in $sides{
+    @each $key, $size in $sizes{
+      .#{$p}#{$s}--#{$key} { #{$prop}#{$side} : $size !important;}
+    }
+  }
+  @each $key, $size in $sizes{
+    .#{$p}x--#{$key} { 
+      #{$prop}-left   : $size !important;
+      #{$prop}-right  : $size !important;
+    }
+    .#{$p}y--#{$key} { 
+      #{$prop}-top     : $size !important;
+      #{$prop}-bottom  : $size !important;
+    }
+  }
+}
